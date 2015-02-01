@@ -352,6 +352,7 @@ class Application(api.APIRequest):
                notes=None, notes_type=None, notify=False, status=1,
                mandatory=None, tags=None, commit_sha=None,
                build_server_url=None, repository_url=None,
+               private=False,
                release_type=None):
         """Upload an .ipa, .apk, or .zip file to create a new app. If an app
         with the same bundle identifier or package name and the same release
@@ -377,6 +378,7 @@ class Application(api.APIRequest):
         :param str commit_sha: The SCM commit sha for the version (optional)
         :param str build_server_url: URL of the build job (optional)
         :param str repository_url: URL to source repository (optional)
+        :param bool private: set to True to enable the private download page (optional)
         :param int release_type: 2 for alpha, 0 for beta, 1 for live (optional)
         :return str: app_id public identifier
         :raises: ValueError
@@ -422,6 +424,7 @@ class Application(api.APIRequest):
             "build_server_url": (build_server_url, str, None),
             "repository_url": (repository_url, str, None),
             "release_type": (release_type, int, [0, 1, 2]),
+            "private": (private, bool, None)
         }
 
         for key in validation_map:
