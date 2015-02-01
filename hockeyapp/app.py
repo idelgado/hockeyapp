@@ -424,7 +424,7 @@ class Application(api.APIRequest):
             "build_server_url": (build_server_url, str, None),
             "repository_url": (repository_url, str, None),
             "release_type": (release_type, int, [0, 1, 2]),
-            "private": (private, bool, None)
+            "private": (private and 'true' or 'false', str, None)
         }
 
         for key in validation_map:
