@@ -1,7 +1,7 @@
 import setuptools
 import sys
 
-from hockeyapp import __version__
+exec(open('hockeyapp/_version.py').read())
 
 requirements = ['requests']
 tests_require = ['nose', 'mock', 'httmock']
